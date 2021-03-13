@@ -142,9 +142,10 @@ void loop()
 
     for (int i = 0; i < stream.bytes_written; i++)
     {
-      Serial.printf("%02X", pbStreamBuffer[i]);
+      //Serial.printf("%02X", pbStreamBuffer[i]);
+      Serial.write(pbStreamBuffer[i]);
     }
-    Serial.println();
+    //Serial.println();
     Serial.flush();
     if (++gFakeDataCurIdx >= WHEEL_DATA_LEN)
       gFakeDataCurIdx = 0;
