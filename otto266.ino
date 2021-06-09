@@ -21,7 +21,7 @@ int32_t gPreviousElapsedTimeMs = 0;
 int32_t gInducedDelay = 0;
 
 #define CALIBRATION_ITERS 1000
-#define CALIBRATION_TARGET 20
+#define CALIBRATION_TARGET 100//20
 #define ENGINEERING_SAFETY_CONSTANT 1
 
 #define BASELINE 0.435
@@ -103,15 +103,16 @@ void setup()
 {
   pinMode(5, INPUT);
   pinMode(16, OUTPUT);
-  Serial.begin(115200);
+  Serial.begin(9600);
   delay(1000);
-  Serial.println("OTTO266 READY TO CONQUER!");
+  //Serial.println("OTTO266 READY TO CONQUER!");
   Serial.flush();
   gFSMCurrentStatus = WAITING_CONFIG;
-  SysCalibrationLoop();
-  Serial.println("Pull D1 up to start transferring data...");
-  Serial.flush();
+  //SysCalibrationLoop();
+  //Serial.println("Pull D1 up to start transferring data...");
+  //Serial.flush();
   // update elapsed time to avoid overshot deltat on first message
+  gInducedDelay = 100;
   gPreviousElapsedTimeMs = millis();
 }
 
